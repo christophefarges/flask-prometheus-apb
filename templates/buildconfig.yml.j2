@@ -1,0 +1,25 @@
+# vim: set filetype=yaml shiftwidth=2 tabstop=2 expandtab shiftwidth :
+---
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  labels:
+    app: {{ app_name }}
+  name: {{ app_name }}
+  namespace: {{ namespace | string }}
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: '{{ app_name }}:latest'
+  source:
+    git:
+      uri: {{ git_uri }}
+    type: Git
+  strategy:
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: 'python:3.6'
+        namespace: openshift
+    type: Source

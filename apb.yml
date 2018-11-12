@@ -1,0 +1,19 @@
+version: 1.0.0
+name: flask-prometheus-ex
+description: your description
+bindable: False
+async: optional
+metadata:
+  displayName: flask-prometheus-ex
+plans:
+  - name: default
+    description: This default plan deploys flask-prometheus-ex
+    free: True
+    default: True
+    metadata: 
+      displayName: Flask Prometheus example
+    parameters: 
+      - name: git_uri
+        type: string
+        default: https://github.com/christophefarges/flask-prometheus-ex
+        required: true

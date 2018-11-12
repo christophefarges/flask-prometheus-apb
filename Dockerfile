@@ -1,0 +1,17 @@
+FROM ansibleplaybookbundle/apb-base
+
+LABEL "com.redhat.apb.spec"=\
+"dmVyc2lvbjogMS4wLjAKbmFtZTogZmxhc2stcHJvbWV0aGV1cy1leApkZXNjcmlwdGlvbjogeW91\
+ciBkZXNjcmlwdGlvbgpiaW5kYWJsZTogRmFsc2UKYXN5bmM6IG9wdGlvbmFsCm1ldGFkYXRhOgog\
+IGRpc3BsYXlOYW1lOiBmbGFzay1wcm9tZXRoZXVzLWV4CnBsYW5zOgogIC0gbmFtZTogZGVmYXVs\
+dAogICAgZGVzY3JpcHRpb246IFRoaXMgZGVmYXVsdCBwbGFuIGRlcGxveXMgZmxhc2stcHJvbWV0\
+aGV1cy1leAogICAgZnJlZTogVHJ1ZQogICAgZGVmYXVsdDogVHJ1ZQogICAgbWV0YWRhdGE6IAog\
+ICAgICBkaXNwbGF5TmFtZTogRmxhc2sgUHJvbWV0aGV1cyBleGFtcGxlCiAgICBwYXJhbWV0ZXJz\
+OiAKICAgICAgLSBuYW1lOiBnaXRfdXJpCiAgICAgICAgdHlwZTogc3RyaW5nCiAgICAgICAgZGVm\
+YXVsdDogaHR0cHM6Ly9naXRodWIuY29tL2NocmlzdG9waGVmYXJnZXMvZmxhc2stcHJvbWV0aGV1\
+cy1leAogICAgICAgIHJlcXVpcmVkOiB0cnVl"
+
+COPY playbooks /opt/apb/project
+COPY . /opt/ansible/roles/flask-prometheus-ex
+RUN chmod -R g=u /opt/{ansible,apb}
+USER apb
