@@ -1,10 +1,10 @@
 # vim: set filetype=yaml shiftwidth=2 tabstop=2 expandtab shiftwidth :
 ---
 
-# - name: "Update last operation"
-#   asb_last_operation:
-#     description: "0%: Starting"
-#   when: in_cluster
+- name: "Update last operation"
+  asb_last_operation:
+    description: "0%: Starting"
+  when: in_cluster
 
 - name: 'Set facts'
   set_fact:
@@ -25,11 +25,11 @@
     - name: route.yml.j2
 
 - name: "start the buildconfig"
-  shell: "oc start-build {{ app_name }}"
-  # when: apb_action is present
+  shell: oc start-build {{ app_name }} -n {{ namespace }}
+  when: state == 'present'
 
 
-# - name: "Update last operation"
-#   asb_last_operation:
-#     description: "100%: Done"
-#   when: in_cluster
+- name: "Update last operation"
+  asb_last_operation:
+    description: "100%: Done"
+  when: in_cluster
